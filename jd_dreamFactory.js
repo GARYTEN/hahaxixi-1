@@ -33,8 +33,8 @@ let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭�
 const randomCount = $.isNode() ? 20 : 5;
 const tuanActiveId = `jfkcidGQavswLOBcAWljrw==`;
 const tuanIDs = [
-  'c1bxMu0JEyHMNJiPzmgg3w==',
-  'leZJPeKA2Zd50bkAihHIQg=='
+  'c1bxMu0JEyHMNJiPzmgg3w=='
+  //'leZJPeKA2Zd50bkAihHIQg=='
 ]
 let cookiesArr = [], cookie = '', message = '';
 const inviteCodes = ['V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=', 'PDPM257r_KuQhil2Y7koNw==', "gB99tYLjvPcEFloDgamoBw=="];
