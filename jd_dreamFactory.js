@@ -868,7 +868,7 @@ function CreateTuan() {
     })
   })
 }
-function JoinTuan(tuanId = 'V74lkIg_O8jWXDkl_2swMA==') {
+function JoinTuan(tuanId = '2eF71ZvWfzQeGFcemTI2Sw==') {
   return new Promise((resolve) => {
     const options = {
       'url': `https://m.jingxi.com/dreamfactory/tuan/JoinTuan?activeId=${escape('jfkcidGQavswLOBcAWljrw==')}&tuanId=${escape(tuanId)}&_time=${Date.now()}&_=${Date.now()}&sceneval=2&g_login_type=1`,
