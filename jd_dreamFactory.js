@@ -1,6 +1,6 @@
 /*
 京东京喜工厂
-更新时间：2020-12-03
+更新时间：2020-12-04
 活动入口 :京东APP->游戏与互动->查看更多->京喜工厂
 或者: 京东APP首页搜索 "玩一玩" ,造物工厂即可
 
@@ -32,10 +32,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 const randomCount = $.isNode() ? 20 : 5;
 const tuanActiveId = `jfkcidGQavswLOBcAWljrw==`;
-const tuanIDs = [
-  'c1bxMu0JEyHMNJiPzmgg3w=='
-  //'leZJPeKA2Zd50bkAihHIQg=='
-]
+
 let cookiesArr = [], cookie = '', message = '';
 const inviteCodes = ['V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=', 'PDPM257r_KuQhil2Y7koNw==', "gB99tYLjvPcEFloDgamoBw=="];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -751,6 +748,7 @@ async function tuanActivity() {
               if (user.encryptPin === $.encryptPin) {
                 if (user.receiveElectric && user.receiveElectric > 0) {
                   console.log(`您在${new Date(user.joinTime * 1000).toLocaleString()}开团奖励已经领取成功\n`)
+                  if ($.surplusOpenTuanNum > 0) await CreateTuan();
                 } else {
                   $.log(`开始领取开团奖励`);
                   await tuanAward(item.tuanActiveId, item.tuanId);//isTuanLeader
@@ -885,11 +883,12 @@ function CreateTuan() {
   })
 }
 async function joinLeaderTuan() {
- for (let tuanId of tuanIDs) {
-   if (tuanId) {
-     await JoinTuan(tuanId);
-   }
- }
+  await updateTuanIds();
+  if (!$.tuanIdS) await updateTuanIdsCDN();
+  for (let tuanId of $.tuanIdS.tuanIds) {
+    if (!tuanId) continue
+    await JoinTuan(tuanId);
+  }
 }
 function JoinTuan(tuanId) {
   return new Promise((resolve) => {
@@ -1014,6 +1013,10 @@ function tuanAward(activeId, tuanId, isTuanLeader = true) {
               if (isTuanLeader) {
                 console.log(`开团奖励(团长)${data.data['electric']}领取成功`);
                 message += `【开团(团长)奖励】${data.data['electric']}领取成功\n`;
+                if ($.surplusOpenTuanNum > 0) {
+                  $.log(`开团奖励(团长)已领取，准备开团`);
+                  await CreateTuan();
+                }
               } else {
                 console.log(`参团奖励${data.data['electric']}领取成功`);
                 message += `【参团奖励】${data.data['electric']}领取成功\n`;
@@ -1029,6 +1032,40 @@ function tuanAward(activeId, tuanId, isTuanLeader = true) {
               console.log(`异常：${JSON.stringify(data)}`);
             }
           }
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+function updateTuanIds(url = 'https://raw.githubusercontent.com/wanthigh/updateJDCode/master/jd_updateFactoryTuanId.json') {
+  return new Promise(resolve => {
+    $.get({url}, (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+        } else {
+          $.tuanIdS = JSON.parse(data);
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+function updateTuanIdsCDN(url = 'https://cdn.jsdelivr.net/gh/wanthigh/updateJDCode@master/jd_updateFactoryTuanId.json') {
+  return new Promise(resolve => {
+    $.get({url}, (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+        } else {
+          $.tuanIdS = JSON.parse(data);
         }
       } catch (e) {
         $.logErr(e, resp)
@@ -1082,7 +1119,7 @@ function readShareCode() {
         resolve(data);
       }
     })
-    await $.wait(5000);
+    await $.wait(10000);
     resolve()
   })
 }
