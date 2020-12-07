@@ -36,7 +36,7 @@ if ($.isNode()) {
   cookiesArr.push(...[$.getdata('CookieJD'), $.getdata('CookieJD2')]);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const inviteCodes = [`P04z54XCjVUnoaW5m9cZ2SpiX1NkU9OflKOX88`,'P04z54XCjVUnoaW5jQNDmX5231NnHmen5k','P04z54XCjVUnoaW5mBNVDGmjikI','P04z54XCjVUnoaW5m9cZ2f43S9Ol5w-RfLMIl0','P04z54XCjVUnoaW5m9cZ2X62HsbwC96iWK3tz8','P04z54XCjVUnoaW5jQLAGb5235IlU2N9gg','P04z54XCjVUnoaW5m5RVDyXiDof15s','P04z54XCjVUnoaW5m9cZ2f-i3pKlCIgWSdflT4'];
+$.newShareCodes = ['P04z54XCjVUnoaW5m9cZ2SpiX1NkU9OflKOX88','P04z54XCjVUnoaW5jQNDmX5231NnHmen5k','P04z54XCjVUnoaW5mBNVDGmjikI','P04z54XCjVUnoaW5m9cZ2f43S9Ol5w-RfLMIl0','P04z54XCjVUnoaW5m9cZ2X62HsbwC96iWK3tz8','P04z54XCjVUnoaW5jQLAGb5235IlU2N9gg','P04z54XCjVUnoaW5m5RVDyXiDof15s','P04z54XCjVUnoaW5m9cZ2f-i3pKlCIgWSdflT4'];
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
@@ -276,23 +276,7 @@ function readShareCode() {
 }
 //格式化助力码
 function shareCodesFormat() {
-  return new Promise(async resolve => {
-    // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
-    $.newShareCodes = [];
-    if ($.shareCodesArr[$.index - 1]) {
-      $.newShareCodes = $.shareCodesArr[$.index - 1].split('@');
-    } else {
-      console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
-      const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
-      $.newShareCodes = inviteCodes[tempIndex].split('@');
-    }
-    const readShareCodeRes = null //await readShareCode();
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
-    console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
-    resolve();
-  })
+
 }
 function requireConfig() {
   return new Promise(resolve => {
