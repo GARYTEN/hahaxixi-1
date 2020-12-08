@@ -28,7 +28,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 const randomCount = $.isNode() ? 20 : 5;
-const inviteCodes = [`fda7e8df-d6b4-44fe-8a7b-fbee30a91b40`,'d592534e-e684-4222-97f8-ae225852d3b2','70383f91-4d58-46a9-bc40-5a9e061ae356','974c5113-a39f-4ce5-8416-2ddcfae056e2','dc5a62c2-964c-42de-a835-e57709438bef'];
+$.newShareCodes = [`fda7e8df-d6b4-44fe-8a7b-fbee30a91b40`,'d592534e-e684-4222-97f8-ae225852d3b2','70383f91-4d58-46a9-bc40-5a9e061ae356','974c5113-a39f-4ce5-8416-2ddcfae056e2','dc5a62c2-964c-42de-a835-e57709438bef'];
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
 if ($.isNode()) {
@@ -261,23 +261,7 @@ function browseSku(skuId) {
 }
 //格式化助力码
 function shareCodesFormat() {
-  return new Promise(async resolve => {
-    // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
-    $.newShareCodes = [];
-    if ($.shareCodesArr[$.index - 1]) {
-      $.newShareCodes = $.shareCodesArr[$.index - 1].split('@');
-    } else {
-      console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
-      const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
-      $.newShareCodes = inviteCodes[tempIndex].split('@');
-    }
-    const readShareCodeRes = null //await readShareCode();
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
-    console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
-    resolve();
-  })
+  
 }
 function requireConfig() {
   return new Promise(resolve => {
