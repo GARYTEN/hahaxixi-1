@@ -37,7 +37,7 @@ if ($.isNode()) {
   cookiesArr.push(...[$.getdata('CookieJD'), $.getdata('CookieJD2')]);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
- $.newShareCodes = [`111`];
+ $.newShareCodes = [`P04z54XCjVUm4aW5m9cZ2SpiX1NkQkqFy9YIIc`,`P04z54XCjVUm4aW5jQNDmX5231NnIKJVtw`,`P04z54XCjVUm4aW5mBNVDGmjikI`,`P04z54XCjVUm4aW5m9cZ2f43S9OlwCtpqlhUaQ`,`P04z54XCjVUm4aW5m9cZ2X62HsbwFM7AQ8K4HE`,`P04z54XCjVUm4aW5m5RVDyXiDof1yc`];
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
