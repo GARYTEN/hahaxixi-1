@@ -134,7 +134,7 @@ if ($.isNode()) {
   cookiesArr.push(...[$.getdata('CookieJD'), $.getdata('CookieJD2')]);
 }
 const JD_API_HOST = 'https://starsingle.m.jd.com/guardianstar/';
-$.newShareCodes = ['']
+$.newShareCodes = ['f7d13025-c3ff-4efe-abcd-5e369c0267a4','fd25e1f4-71bf-48a4-8d6c-94ae6add09f2','ab533121-f570-46fb-ac6d-9d030458db14','f633575c-fcaa-43e9-a3d9-999c564d75f9','fb54e02c-2736-41fa-b8fd-f2d2388d774c','2c61304f-32f9-4772-a4cf-eef12b0681a4']
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
