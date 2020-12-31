@@ -119,7 +119,7 @@ async function jdBeanHome() {
   // }
   do {
     await doTask2()
-    await $.wait(1000)
+    await $.wait(3000)
   } while (!$.doneState)
   await $.wait(1000)
   await award("feeds")
