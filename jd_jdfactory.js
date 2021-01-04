@@ -346,7 +346,7 @@ async function doTask() {
 
 //领取做完任务的奖励
 function jdfactory_collectScore(taskToken) {
-  return new Promise(resolve => {
+  return new Promise(async resolve => {
     await $.wait(1030);
     $.post(taskPostUrl("jdfactory_collectScore", { taskToken }, "jdfactory_collectScore"), async (err, resp, data) => {
       try {
