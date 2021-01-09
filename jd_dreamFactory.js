@@ -34,7 +34,7 @@ const randomCount = $.isNode() ? 20 : 5;
 let tuanActiveId = `6S9y4sJUfA2vPQP6TLdVIQ==`;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '';
-const inviteCodes = ['V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=', 'PDPM257r_KuQhil2Y7koNw==', "gB99tYLjvPcEFloDgamoBw=="];
+const inviteCodes = ['V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=@0WtCMPNq7jekehT6d3AbFw==', 'PDPM257r_KuQhil2Y7koNw==', "gB99tYLjvPcEFloDgamoBw==", '-OvElMzqeyeGBWazWYjI1Q==', 'GFwo6PntxDHH95ZRzZ5uAg=='];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -488,7 +488,7 @@ function completeTask(taskId, taskName) {
 function doTask(taskId) {
   return new Promise(async resolve => {
     // const url = `/newtasksys/newtasksys_front/DoTask?source=dreamfactory&bizCode=dream_factory&taskId=${taskId}&sceneval=2&g_login_type=1`;
-    $.get(newtasksysUrl('DoTask', taskId), (err, resp, data) => {
+    $.get(newtasksysUrl('DoTask', taskId, '_time,bizCode,configExtra,source,taskId'), (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -1434,10 +1434,13 @@ function taskurl(functionId, body = '') {
     }
   }
 }
-function newtasksysUrl(functionId, taskId) {
+function newtasksysUrl(functionId, taskId, stk) {
   let url = `${JD_API_HOST}/newtasksys/newtasksys_front/${functionId}?source=dreamfactory&bizCode=dream_factory&sceneval=2&g_login_type=1&_time=${Date.now()}&_=${Date.now()}`;
   if (taskId) {
     url += `&taskId=${taskId}`;
+  }
+  if (stk) {
+    url += `&_stk=${stk}`;
   }
   return {
     url,
