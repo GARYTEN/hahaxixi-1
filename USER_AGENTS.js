@@ -1,5 +1,6 @@
 const USER_AGENTS = [
   "JD4iPhone/167490 (iPhone; iOS 14.3; Scale/2.00)",
+  "JD4iPhone/167515 (iPhone; iOS 14.3; Scale/2.00)",
   "JD4iPhone/9.3.5 CFNetwork/1209 Darwin/20.2.0",
   "JD4iPhone/167515 (iPhone; iOS 14.3; Scale/3.00)",
   "jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0",
