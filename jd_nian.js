@@ -478,7 +478,7 @@ function getFriendData(inviteId) {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data);
-          if (data && data.data['bizCode'] === 0) {
+          if (data.data && data.data['bizCode'] === 0) {
             $.itemId = data.data.result.homeMainInfo.guestInfo.itemId
             await collectScore('2',$.itemId,null,inviteId)
           }
@@ -829,13 +829,13 @@ function shareCodesFormat() {
       $.newShareCodes = $.shareCodesArr[$.index - 1].split('@');
     } else {
       console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
-    //  const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
-      //$.newShareCodes = inviteCodes[tempIndex].split('@');
+      //const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
+     // $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
     //const readShareCodeRes = await readShareCode();
    // if (readShareCodeRes && readShareCodeRes.code === 200) {
    //   $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-   // }
+  //  }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
     resolve();
   })
