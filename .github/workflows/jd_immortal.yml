@@ -49,4 +49,5 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JD_IMMORTAL_SHARECODES: ${{ secrets.JD_IMMORTAL_SHARECODES }}
+          JDSXSY_SHARECODES: ${{ secrets.JDSXSY_SHARECODES }}
+          JD_IMMORTAL_LATLON: ${{ secrets.JD_IMMORTAL_LATLON }}
