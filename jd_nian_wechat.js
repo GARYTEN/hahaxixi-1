@@ -1,26 +1,4 @@
-/*
-京东炸年兽小程序🧨
-强烈推荐使用自定义的小程序UA防止黑号
-活动时间:2021-1-18至2021-2-11
-暂不加入品牌会员
-活动入口: 京东小程序-炸年兽
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#京东炸年兽小程序🧨
-50 8 * * * https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_nian_wechat.js, tag=京东炸年兽小程序🧨, enabled=true
 
-================Loon==============
-[Script]
-cron "50 8 * * *" script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_nian_wechat.js,tag=京东炸年兽小程序🧨
-
-===============Surge=================
-京东炸年兽小程序🧨 = type=cron,cronexp="50 8 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_nian_wechat.js
-
-============小火箭=========
-京东炸年兽小程序🧨 = type=cron,script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_nian_wechat.js, cronexpr="50 8 * * *", timeout=3600, enable=true
- */
 const $ = new Env('京东炸年兽小程序🧨');
 
 const notify = $.isNode() ? require('./sendNotify') : '';

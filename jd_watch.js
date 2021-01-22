@@ -1,28 +1,4 @@
-/*
-发现-看一看
-活动结束时间未知
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-脚本已内置需要抓的各40个包，但还建议自行抓包使用。
-使用 Charles 抓包，使用正则表达式：functionId=disc(AcceptTask|DoTask) 过滤请求
-选中所有请求，将所有请求保存为 JSON Session File 名称为 watch.chlsj，将该文件与jd_watch.js放在相同目录中
-使用手机抓包，将functionId=discAcceptTask的请求填入acceptBody，将discDoTask的body填入doBody
-云端使用：将所抓的两种包使用@符号隔开后，分别填入到WATCH_ACCEPTBODY、WATCH_DOBODY环境变量
-============Quantumultx===============
-[task_local]
-#京东看一看
-10 9 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_watch.js, tag=京东看一看, enabled=true
 
-================Loon==============
-[Script]
-cron "10 9 * * *" script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_watch.js,tag=京东看一看
-
-===============Surge=================
-京东看一看 = type=cron,cronexp="10 9 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_watch.js
-
-============小火箭=========
-京东看一看 = type=cron,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_watch.js, cronexpr="10 9 * * *", timeout=900, enable=true
- */
 const $ = new Env('京东看一看');
 let acceptBody = [
   `area=19_1601_50258_51885&body=%7B%22referPageId%22%3A%22discRecommend%22%2C%22itemId%22%3A%22240304968%7C11%22%2C%22bizType%22%3A1%2C%22taskId%22%3A%223%22%2C%22mType%22%3A0%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone11%2C8&eid=eidIf12a8121eas2urxgGc%2BzS5%2BUYGu1Nbed7bq8YY%2BgPd0Q0t%2BiviZdQsxnK\/HTA7AxZzZBrtu1ulwEviYSV3QUuw2XHHC%2BPFHdNYx1A\/3Zt8xYR%2Bd3&isBackground=N&joycious=230&lang=zh_CN&networkType=4g&networklibtype=JDNetworkBaseAF&openudid=88732f840b77821b345bf07fd71f609e6ff12f43&osVersion=14.2&partner=apple&rfs=0000&scope=11&screen=828%2A1792&sign=6e2542bc745427327751374bafb0ae9f&st=1608135453301&sv=100&uts=0f31TVRjBSsqndu4\/jgUPz6uymy50MQJeV3gx7opiKtygGyo92leRFrPVOIo20NforiduH91mLoQ1o2qJ8daXhf\/xhRJmtkYS6BpaDYFbcnRsHq1NWDoHNSdz0IHasLR0qvMInTX\/zXP6xhvVS%2BkNhIG3OBassF9hJCEvZYn2fZrNJ0pGMFd1nSajoLNxMEL\/CpQOaWCkDUj2zuEy%2BNBnw%3D%3D&uuid=hjudwgohxzVu96krv\/T6Hg%3D%3D&wifiBssid=unknown`,

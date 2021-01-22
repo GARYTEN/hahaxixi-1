@@ -1,29 +1,4 @@
-/*
- * @Author: shylocks https://github.com/shylocks
- * @Date: 2021-01-20 13:27:41
- * @Last Modified by:   shylocks
- * @Last Modified time: 2021-01-20 21:27:41
- */
-/*
-集鞭炮赢京豆
-活动入口：https://linggame.jd.com/babelDiy/Zeus/heA49fhvyw9UakaaS3UUJRL7v3o/index.html
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#集鞭炮赢京豆
-10 8,21 * * * https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_firecrackers.js, tag=集鞭炮赢京豆, enabled=true
 
-================Loon==============
-[Script]
-cron "10 8,21 * * *" script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_firecrackers.js,tag=集鞭炮赢京豆
-
-===============Surge=================
-集鞭炮赢京豆 = type=cron,cronexp="10 8,21 * * *",wake-system=1,timeout=2220,script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_firecrackers.js
-
-============小火箭=========
-集鞭炮赢京豆 = type=cron,script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_firecrackers.js, cronexpr="10 8,21 * * *", timeout=2200, enable=true
- */
 const $ = new Env('集鞭炮赢京豆');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';

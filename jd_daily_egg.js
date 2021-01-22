@@ -1,15 +1,4 @@
-/*
- * @Author: lxk0301 https://github.com/lxk0301 
- * @Date: 2020-11-10 14:10:27 
- * @Last Modified by: lxk0301
- * @Last Modified time: 2020-11-20 14:11:01
- */
-/*
-京东金融-天天提鹅
-定时收鹅蛋,兑换金币
-先这样子吧
- */
-//0 */3 * * *
+
 const $ = new Env('天天提鹅');
 let cookiesArr = [], cookie = '';
 const JD_API_HOST = 'https://ms.jr.jd.com/gw/generic/uc/h5/m';

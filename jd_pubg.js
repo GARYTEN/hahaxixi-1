@@ -1,25 +1,4 @@
-/*
-PUBG ,运行时间会比较久,Surge请加大timeout时间
-脚本会给内置的码进行助力
-活动于2020-12-13日结束
-活动地址：https://starsingle.m.jd.com/static/index.html#/?fromChangeSkinNum=PUBG
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#PUBG
-10 0 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_pubg.js, tag=PUBG, enabled=true
 
-================Loon==============
-[Script]
-cron "10 0 * * *" script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_pubg.js,tag=PUBG
-
-===============Surge=================
-PUBG = type=cron,cronexp="10 0 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_pubg.js
-
-============小火箭=========
-PUBG = type=cron,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_pubg.js, cronexpr="10 0 * * *", timeout=200, enable=true
- */
 const $ = new Env('PUBG');
 !function(n) {
   "use strict";

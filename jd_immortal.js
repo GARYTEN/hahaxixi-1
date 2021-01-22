@@ -1,29 +1,4 @@
-/*
-京东神仙书院
-活动时间:2021-1-20至2021-2-5
-暂不加入品牌会员，需要自行填写坐标，用于做逛身边好店任务
-环境变量：JD_IMMORTAL_LATLON(经纬度)
-示例：JD_IMMORTAL_LATLON={"lat":33.1, "lng":118.1}
-boxjs IMMORTAL_LATLON
-活动入口: 京东app-我的-神仙书院
-活动地址：https://h5.m.jd.com//babelDiy//Zeus//4XjemYYyPScjmGyjej78M6nsjZvj//index.html?babelChannel=ttt9
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#京东神仙书院
-0 8 * * * https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_immortal.js, tag=京东神仙书院, enabled=true
 
-================Loon==============
-[Script]
-cron "0 8 * * *" script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_immortal.js,tag=京东神仙书院
-
-===============Surge=================
-京东神仙书院 = type=cron,cronexp="0 8 * * *",wake-system=1,timeout=2000,script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_immortal.js
-
-============小火箭=========
-京东神仙书院 = type=cron,script-path=https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_immortal.js, cronexpr="0 8 * * *", timeout=2000, enable=true
- */
 const $ = new Env('京东神仙书院');
 
 const notify = $.isNode() ? require('./sendNotify') : '';

@@ -1,20 +1,4 @@
-/*
-热8超级盲盒，可抽奖获得京豆，建议在凌晨0点时运行脚本，白天抽奖基本没有京东
-活动地址: https://blindbox.jd.com
-活动时间到18号
-支持京东双账号
-更新时间：2020-08-17
-脚本兼容: QuantumultX, Surge,Loon, JSBox, Node.js
-// quantumultx
-[task_local]
-#热8超级盲盒
-1 0,1-23/3 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_mohe.js, tag=热8超级盲盒, enabled=true
-// Loon
-[Script]
-cron "1 0,1-23/3 * * *" script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_mohe.js,tag=热8超级盲盒
-// Surge
-热8超级盲盒 = type=cron,cronexp=1 0,1-23/3 * * *,wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_mohe.js
- */
+
 const $ = new Env('热8超级盲盒');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';

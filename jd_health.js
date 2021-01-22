@@ -1,23 +1,4 @@
-/*
-健康抽奖机
-活动地址：https://h5.m.jd.com/babelDiy/Zeus/3HBUP66Gnx92mRt2bXbT9VamYWSx/index.html
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#健康抽奖机
-10 0 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_health.js, tag=健康抽奖机, enabled=true
 
-================Loon==============
-[Script]
-cron "10 0 * * *" script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_health.js,tag=健康抽奖机
-
-===============Surge=================
-健康抽奖机 = type=cron,cronexp="10 0 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_health.js
-
-============小火箭=========
-健康抽奖机 = type=cron,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_health.js, cronexpr="10 0 * * *", timeout=200, enable=true
- */
 const $ = new Env('健康抽奖机');
 
 const notify = $.isNode() ? require('./sendNotify') : '';
