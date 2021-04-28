@@ -1,5 +1,4 @@
 name: 构建JD Scripts镜像
-
 on:
   workflow_dispatch:
   push:
@@ -7,7 +6,6 @@ on:
       - master
     paths:
       - "docker/Dockerfile"
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -15,7 +13,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@master
-
       # 要去 https://hub.docker.com/ 那边注册一个账户然后配置用户名密码
       # - name: 构建并推送到Dockerhub官方镜像仓库
       #   uses: docker/build-push-action@v1
@@ -25,12 +22,10 @@ jobs:
       #     dockerfile: docker/Dockerfile
       #     repository: akyakya/jd_scripts
       #     tag_with_ref: true
-
       - id: repo_name
         uses: ASzc/change-string-case-action@v1
         with:
           string: ${{ github.repository }}
-
       - name: 构建并推送到Github Packages
         uses: docker/build-push-action@v1
         if: env.GITHUB_TOKEN
