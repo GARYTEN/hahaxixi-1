@@ -6,11 +6,11 @@ name: jd_city
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25 21 * * *'
+    - cron: '5 13,15 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: city
+    types: jd_city
 jobs:
   build:
 
@@ -26,16 +26,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Cache node_modules
-        uses: actions/cache@v2 # ä½¿ç”¨ GitHub å®˜æ–¹çš„ç¼“å­˜ Actionã€‚
+        uses: actions/cache@v2 # Ê¹ÓÃ GitHub ¹Ù·½µÄ»º´æ Action¡£
         env:
           cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # ä½¿ç”¨ package-lock.json çš„ Hash ä½œä¸ºç¼“å­˜çš„ keyã€‚ä¹Ÿå¯ä»¥ä½¿ç”¨ package.json ä»£æ›¿
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # Ê¹ÓÃ package-lock.json µÄ Hash ×÷Îª»º´æµÄ key¡£Ò²¿ÉÒÔÊ¹ÓÃ package.json ´úÌæ
       - name: npm install
         run: |
           npm install
-      - name: 'è¿è¡Œ ã€åŸåŸåˆ†ç°é‡‘è„šæœ¬ã€‘'
+      - name: 'ÔËĞĞ ¡¾·ÉÀûÆÖ½Å±¾¡¿'
         run: |
           node jd_city.js
         env:
@@ -51,8 +51,3 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           CITY_SHARECODES: ${{ secrets.CITY_SHARECODES }}
           PUTKEY: ${{ secrets.PUTKEY }}
-      - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@main
-        with:
-          retain_days: 1
-          keep_minimum_runs: 1
