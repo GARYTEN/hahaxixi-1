@@ -1,6 +1,6 @@
 
 const $ = new Env('京东年货节');
-
+console.log("啊哈哈哈哈"+process.env.PUTKEY);
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
